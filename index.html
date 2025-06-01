@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Loja Granada</title>
+  <link rel="stylesheet" href="estilo/bootstrap.css" />
+  <link rel="stylesheet" type="text/css" href="estilo/style.css" />
+</head>
+<body>
+  
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #00FF00;">
+    <a href="index.html"><img src="img/logo.png" alt="Logo"></a>
+    <a class="navbar-brand font-weight-bold" href="index.html">Granada</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="conteudoNavbarSuportado">
+      <form id="searchForm" class="form-inline my-2 my-lg-0" onsubmit="return pesquisarProduto(event)">
+        <input id="searchInput" class="form-control mr-sm-2" type="search" placeholder="Pesquisar" />
+        <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Pesquisar</button>
+      </form>
+    </div>
+  </nav>
+
+  <!-- CONTEÚDO -->
+  <div class="container mt-4">
+    <div id="searchResult"></div>
+    
+    <!-- Carousel Produtos -->
+<div id="carouselProdutos" class="carousel slide mb-4" data-ride="carousel">
+  <div class="carousel-inner" id="carouselInnerProdutos">
+    <!-- Itens do carousel serão inseridos via JS -->
+  </div>
+  <a class="carousel-control-prev" href="#carouselProdutos" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Anterior</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselProdutos" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Próximo</span>
+  </a>
+</div>
+
+    <div id="cardsContainer" class="card-container mt-4 d-flex flex-wrap justify-content-start"></div>
+
+    <h3 class="mt-5">Faça seu pedido</h3>
+    <form id="pedidoForm" action="https://formspree.io/f/mrbqjdbp" method="POST" class="mb-4" onsubmit="return validarFormulario()">
+      <div class="form-group">
+        <label>Produtos selecionados:</label>
+        <ul id="produtosSelecionados" class="list-group mb-2"></ul>
+        <input type="hidden" name="produtos" id="produtosInput" />
+        <input type="hidden" name="tamanhos" id="tamanhosInput" />
+      </div>
+      <div class="form-group">
+        <label for="nomeCliente">Nome completo:</label>
+        <input type="text" id="nomeCliente" name="nome" class="form-control" required />
+      </div>
+      <div class="form-group">
+        <label for="contatoCliente">Telefone ou Instagram:</label>
+        <input type="text" id="contatoCliente" name="contato" class="form-control" required />
+      </div>
+      <div id="mensagemErro" class="text-danger mb-2" style="display:none;"></div>
+      <p id="mensagemSucesso" class="text-success mb-2" style="display:none;"></p>
+      <button type="submit" class="btn btn-success">Enviar pedido</button>
+    </form>
+  </div>
+
+  <!-- RODAPÉ -->
+  <footer class="footer-verde-agua text-center py-4 mt-5">
+    <div class="container">
+      <p class="mb-1">© 2025 Loja Granada. Todos os direitos reservados.</p>
+      <p class="mb-0">
+        Sigam nossos perfis: </br>
+        <a href="https://www.instagram.com/atletica_granadaef?igsh=MXc0MDRtdHU3NmRtcQ=="><img src="img/instagram.png"></a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- Modal Bootstrap para confirmação -->
+  <div class="modal fade" id="sucessoModal" tabindex="-1" role="dialog" aria-labelledby="sucessoModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="sucessoModalLabel">Pedido Enviado</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Assim que possível entraremos em contato!
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCRIPTS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>
